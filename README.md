@@ -1,5 +1,5 @@
 # Secure Login System
-**Cybersecurity Internship — Task 4 (Thiranex)**
+**Cybersecurity Internship**
 
 A secure authentication web app built with Node.js + Express, demonstrating
 industry-standard login security practices.
