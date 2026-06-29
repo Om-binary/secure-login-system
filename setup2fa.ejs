@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Setup 2FA - Secure Login System</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>📱 Setup 2FA (Optional)</h1>
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <p style="font-size:13px;color:#555;text-align:center;margin-top:-10px;">
+      Scan this QR code with Google Authenticator / Authy, then enter the 6-digit code to enable Two-Factor Authentication.
+    </p>
+    <% if (qrImage) { %>
+      <div class="qr-box"><img src="<%= qrImage %>" alt="2FA QR Code"></div>
+    <% } %>
+    <span class="secret">Manual key: <%= secret %></span>
+
+    <form action="/enable-2fa" method="POST">
+      <input type="hidden" name="username" value="<%= username %>">
+      <label>6-digit code</label>
+      <input type="text" name="token" required maxlength="6" pattern="\d{6}">
+      <button type="submit">Enable 2FA</button>
+    </form>
+    <div class="skip"><a href="/skip-2fa">Skip for now &rarr;</a></div>
+  </div>
+</body>
+</html>
